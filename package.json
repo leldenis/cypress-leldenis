@@ -1,6 +1,7 @@
 {
   "devDependencies": {
-    "cypress": "^14.3.2"
+    "cypress": "^13.6.6",
+    "cypress-xpath": "^2.0.1"
   },
   "name": "cypress-leldenis",
   "version": "1.0.0",
