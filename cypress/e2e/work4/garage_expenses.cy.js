@@ -1,19 +1,21 @@
-import GaragePage from './garagePage.js';
-import ExpensesPage from './expensesPage.js';
-import credentials from './credentials.json';
+import GaragePage from './garagePage';
+import ExpensesPage from './expensesPage';
 
 describe('Garage and Expenses Functionality', () => {
-  let garagePage;
-  let expensesPage;
+  const garagePage = new GaragePage();
+  const expensesPage = new ExpensesPage();
 
   beforeEach(() => {
-    cy.login(
-      credentials.username.qauto,
-      credentials.password.qauto,
-      credentials.baseUrl.qauto
-    );
-    garagePage = new GaragePage();
-    expensesPage = new ExpensesPage();
+    const { username, password } = Cypress.env();
+    const baseUrl = Cypress.config('baseUrl');
+
+    cy.visit(baseUrl);
+    cy.get('.header_signin').contains('Sign In').click();
+    cy.get('#signinEmail').type(username);
+    cy.get('#signinPassword').type(password, { sensitive: true });
+    cy.contains('button', 'Login').click();
+    cy.url().should('include', '/panel/garage');
+    cy.get('.panel-page').should('be.visible').contains('Garage');
   });
 
   it('should add a car to the garage', () => {
@@ -26,7 +28,7 @@ describe('Garage and Expenses Functionality', () => {
   });
 
   it('should add fuel expenses to the car', () => {
-    expensesPage.clickFuelExpenses();
+    expensesPage.clickFuelExpenses(),
     expensesPage.clickAddExpenseButton();
     expensesPage.enterMileageInput('1100');
     expensesPage.enterLitresInput('50');

@@ -8,5 +8,8 @@ module.exports = defineConfig({
       username: credentials.username.qauto,
       password: credentials.password.qauto,
     },
+    setupNodeEvents(on, config) {
+      on('task', { log: (message) => console.log(message) });
+    },
   },
 });

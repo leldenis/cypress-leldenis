@@ -173,13 +173,13 @@
     "wrappy": "^1.0.2",
     "yauzl": "^2.10.0"
   },
-  "scripts": {
-    "cy:open:qauto": "cypress open --config-file cypress/e2e/work4/qauto.config.сjs",
-    "cy:run:qauto": "cypress run --config-file cypress/e2e/work4/qauto.config.сjs --spec 'cypress/e2e/work4/garage_expenses.cy.js'",
-    "cy:open:qauto2": "cypress open --config-file cypress/e2e/work4/qauto2.config.cjs",
-    "cy:run:qauto2": "cypress run --config-file cypress/e2e/work4/qauto2.config.cjs --spec 'cypress/e2e/work4/garage_expenses.cy.js'",
-    "report:merge": "mochawesome-merge cypress/reports/*.json > cypress/reports/merged.json",
-    "report:generate": "marge cypress/reports/merged.json -o cypress/reports"
+"scripts": {
+  "cy:open:qauto": "cypress open --env configEnv=qauto",
+  "cy:run:qauto": "cypress run --env configEnv=qauto --spec 'cypress/e2e/work4/garage_expenses.cy.js'",
+  "cy:open:qauto2": "cypress open --env configEnv=qauto2",
+  "cy:run:qauto2": "cypress run --env configEnv=qauto2 --spec 'cypress/e2e/work4/garage_expenses.cy.js'",
+  "report:merge": "mochawesome-merge cypress/reports/*.json > cypress/reports/merged.json",
+  "report:generate": "marge cypress/reports/merged.json -o cypress/reports"
   },
   "keywords": [],
   "author": "",
