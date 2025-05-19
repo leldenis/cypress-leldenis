@@ -46,10 +46,10 @@ Cypress.Commands.add('generateValidPassword', () => {
   return cy.wrap(password);
 });
 
-Cypress.Commands.add('login', () => {
-  cy.visit('https://guest:welcome2qauto@qauto.forstudy.space');
+Cypress.Commands.add('login', (email, password, baseUrl) => {
+  cy.visit(baseUrl);
   cy.get('.header_signin').contains('Sign In').click();
-  cy.get('#signinEmail').type('welcome2qauto@qauto'); 
-  cy.get('#signinPassword').type('ValidPassrd1', { sensitive: true }); 
+  cy.get('#signinEmail').type(email); 
+  cy.get('#signinPassword').type(password, { sensitive: true }); 
   cy.contains('button', 'Login').click();
 });

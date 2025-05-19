@@ -3,3 +3,5 @@ dist/
 .env
 cypress/videos/
 cypress/screenshots/
+reports
+cypress/e2e/work4/credentials.json
