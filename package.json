@@ -178,6 +178,8 @@
   "cy:run:qauto": "cypress run --env configEnv=qauto --spec 'cypress/e2e/work4/garage_expenses.cy.js'",
   "cy:open:qauto2": "cypress open --env configEnv=qauto2",
   "cy:run:qauto2": "cypress run --env configEnv=qauto2 --spec 'cypress/e2e/work4/garage_expenses.cy.js'",
+  "cy:open:qauto3": "cypress open --env configEnv=qauto",
+  "cy:run:qauto3": "cypress run --env configEnv=qauto --spec 'cypress/e2e/work5/garage_expenses_interception.cy.js'",
   "report:merge": "mochawesome-merge cypress/reports/*.json > cypress/reports/merged.json",
   "report:generate": "marge cypress/reports/merged.json -o cypress/reports"
   },
