@@ -53,3 +53,26 @@ Cypress.Commands.add('login', (email, password, baseUrl) => {
   cy.get('#signinPassword').type(password, { sensitive: true }); 
   cy.contains('button', 'Login').click();
 });
+
+Cypress.Commands.add('createExpense', (carId, mileage, liters, totalCost) => {
+  const reportedAt = new Date().toISOString().split('T')[0];
+  const baseUrl = Cypress.config('baseUrl');
+
+  cy.request({
+    method: 'POST',
+    url: `${baseUrl}/api/expenses`,
+    body: {
+      carId,
+      reportedAt,
+      mileage,
+      liters,
+      totalCost,
+      forceMileage: false
+    }
+  }).then((response) => {
+    expect(response.status).to.eq(200);
+    expect(response.body.data.carId).to.eq(carId);
+    expect(response.body.data.totalCost).to.eq(totalCost);
+    return response.body.data;
+  });
+});
