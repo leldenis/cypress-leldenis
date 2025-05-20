@@ -1,5 +1,5 @@
 const { defineConfig } = require('cypress');
-const credentials = require('./credentials.json');
+const credentials = require('./cypress/credential/credentials.json');
 
 module.exports = defineConfig({
   e2e: {

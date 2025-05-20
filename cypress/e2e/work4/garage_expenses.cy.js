@@ -1,5 +1,5 @@
-import GaragePage from './garagePage';
-import ExpensesPage from './expensesPage';
+import GaragePage from '../../pageObject/garagePage'
+import ExpensesPage from '../../pageObject/expensesPage';
 
 describe('Garage and Expenses Functionality', () => {
   const garagePage = new GaragePage();
