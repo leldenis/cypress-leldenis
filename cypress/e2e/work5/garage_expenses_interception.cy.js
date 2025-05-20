@@ -1,6 +1,5 @@
 import GaragePage from '../../pageObject/garagePage';
 import ExpensesPage from '../../pageObject/expensesPage';
-import credential from '../../credential/credentials.json'
 
 describe('Garage and Expenses API/UI Tests', () => {
   const garagePage = new GaragePage();
@@ -29,7 +28,6 @@ describe('Garage and Expenses API/UI Tests', () => {
     garagePage.clickAddButton();
     garagePage.verifySuccessMessage('Car added');
 
-    cy.wait(10000);
     cy.wait('@createCar').then((interception) => {
       expect(interception.response.statusCode).to.eq(201);
       const carId = interception.response.body.data.id;
